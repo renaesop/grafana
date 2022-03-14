@@ -37,7 +37,7 @@ const frame: DataFrame = {
       values: new ArrayVector(['1645029699311000500', '1645029699312000500', '1645029699313000500']),
     },
   ],
-  length: 1,
+  length: 3,
 };
 
 function makeRequest(expr: string): DataQueryRequest<LokiQuery> {
@@ -76,6 +76,9 @@ describe('loki backendResultTransformer', () => {
       executedQueryString: 'something1',
       preferredVisualisationType: 'logs',
       searchWords: ['thing1'],
+      custom: {
+        lokiQueryStatKey: 'Summary: total bytes processed',
+      },
     };
     expectedFrame.fields[2].type = FieldType.time;
 
